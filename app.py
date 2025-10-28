@@ -1,7 +1,7 @@
-from models.database import get_db_connection
-from flask import Flask, request, url_for, redirect, render_template, flash, session
-from werkzeug.security import check_password_hash, generate_password_hash
+from models.database import init_db
+from flask import Flask, url_for, redirect, session
 
+init_db()
 app = Flask(__name__, template_folder='views')
 app.secret_key = 'your_secret_key'
 
