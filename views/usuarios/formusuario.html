@@ -1,0 +1,58 @@
+{% extends 'layout/base.html' %} {% block content %}
+<h1>Nuevo usuario</h1>
+<form method="POST">
+  <div class="mb-3">
+    <label for="username" class="form-label">Nombre</label>
+    <input
+      type="text"
+      class="form-control"
+      id="username"
+      name="username"
+      required
+    />
+  </div>
+  <div class="mb-3">
+    <label for="correo" class="form-label">Correo</label>
+    <input
+      type="text"
+      class="form-control"
+      id="correo"
+      name="correo"
+      required
+    />
+  </div>
+  <div class="mb-3">
+    <label for="celular" class="form-label">Celular</label>
+    <input
+      type="text"
+      class="form-control"
+      id="celular"
+      name="celular"
+      required
+    />
+  </div>
+  <div class="mb-3">
+    <label for="password" class="form-label">Contraseña</label>
+    <input
+      type="text"
+      class="form-control"
+      id="password"
+      name="password"
+      required
+    />
+  </div>
+  <div class="mb-3">
+    <label for="confirm_password" class="form-label"
+      >Confirmar Contraseña</label
+    >
+    <input
+      type="text"
+      class="form-control"
+      id="confirm_password"
+      name="confirm_password"
+      required
+    />
+  </div>
+  <button type="submit" class="btn btn-primary">Enviar</button>
+</form>
+{% endblock %}

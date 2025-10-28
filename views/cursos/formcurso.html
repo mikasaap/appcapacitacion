@@ -1,0 +1,31 @@
+{% extends 'layout/base.html' %} {% block content %} {% if estudiante %}
+<h1>Editar Curso</h1>
+{% else %}
+<h1>Nuevo Curso</h1>
+{% endif %}
+<form method="POST">
+  <div class="mb-3">
+    <label for="descripcion" class="form-label">Descripción</label>
+    <input
+      type="text"
+      class="form-control"
+      id="descripcion"
+      name="descripcion"
+      required
+      value="{{ curso.descripcion if curso else '' }}"
+    />
+  </div>
+  <div class="mb-3">
+    <label for="horas" class="form-label">Horas</label>
+    <input
+      type="number"
+      class="form-control"
+      id="horas"
+      name="horas"
+      required
+      value="{{ curso.horas if curso else '' }}"
+    />
+  </div>
+  <button type="submit" class="btn btn-primary">Enviar</button>
+</form>
+{% endblock %}

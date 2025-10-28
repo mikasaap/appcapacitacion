@@ -1,0 +1,42 @@
+{% extends 'layout/base.html' %} {% block content %} {% if estudiante %}
+<h1>Editar Estudiante</h1>
+{% else %}
+<h1>Nuevo Estudiante</h1>
+{% endif %}
+<form method="POST">
+  <div class="mb-3">
+    <label for="nombre" class="form-label">Nombre</label>
+    <input
+      type="text"
+      class="form-control"
+      id="nombre"
+      name="nombre"
+      required
+      value="{{ estudiante.nombre if estudiante else '' }}"
+    />
+  </div>
+  <div class="mb-3">
+    <label for="apellidos" class="form-label">Apellidos</label>
+    <input
+      type="text"
+      class="form-control"
+      id="apellidos"
+      name="apellidos"
+      required
+      value="{{ estudiante.apellidos if estudiante else '' }}"
+    />
+  </div>
+  <div class="mb-3">
+    <label for="fecha_nacimiento" class="form-label">Fecha de Nacimiento</label>
+    <input
+      type="date"
+      class="form-control"
+      id="fecha_nacimiento"
+      name="fecha_nacimiento"
+      value="{{ estudiante.fecha_nacimiento if estudiante else '' }}"
+      required
+    />
+  </div>
+  <button type="submit" class="btn btn-primary">Enviar</button>
+</form>
+{% endblock %}

@@ -1,0 +1,43 @@
+{%extends 'layout/base.html'%} {% block navbar %} {% include
+'layout/navbar.html' %} {% endblock %} {% block content %}
+<a
+  href="{{url_for('inscripciones.create_inscripcion')}}"
+  class="btn btn-primary mb-3"
+  >Nueva Inscripción</a
+>
+<h1>Inscripciones</h1>
+<table class="table table-striped table-hover">
+  <thead class="table-dark">
+    <tr>
+      <th>ID</th>
+      <th>Estudiante</th>
+      <th>Curso</th>
+      <th>Fecha de Inscripción</th>
+      <th>Acciones</th>
+    </tr>
+  </thead>
+  <tbody>
+    {% for item in inscripciones %}
+    <tr>
+      <td>{{ item.id }}</td>
+      <td>{{item.estudiante}}</td>
+      <td>{{item.curso }}</td>
+      <td>{{item.fecha}}</td>
+      <td>
+        <a
+          href="{{ url_for('inscripciones.delete_inscripcion', id=item.id) }}"
+          class="btn btn-sm btn-danger"
+          >Eliminar</a
+        >
+        <a
+          href="{{ url_for('inscripciones.edit_inscripcion', id=item.id) }}"
+          class="btn btn-sm btn-warning"
+        >
+          Editar</a
+        >
+      </td>
+    </tr>
+    {% endfor %}
+  </tbody>
+</table>
+{% endblock %}
