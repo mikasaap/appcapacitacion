@@ -1,9 +1,11 @@
 from flask import Blueprint, render_template, request, redirect, url_for, flash 
 from models.database import get_db_connection
+from utils.decorators import login_required
 inscripciones_bp = Blueprint('inscripciones', __name__, 
                              template_folder='../views/inscripciones', url_prefix='/inscripciones')
 
 @inscripciones_bp.route('/')
+@login_required
 def view_inscripciones():
     conn = get_db_connection()
     inscripciones = conn.execute("""
@@ -15,6 +17,7 @@ def view_inscripciones():
     conn.close()
     return render_template('inscripciones.html', inscripciones=inscripciones)
 @inscripciones_bp.route('/new', methods=('GET', 'POST'))
+@login_required
 def create_inscripcion():
     conn = get_db_connection()
     cursos = conn.execute('SELECT * FROM cursos').fetchall()
@@ -31,6 +34,7 @@ def create_inscripcion():
     conn.close()
     return render_template('forminscripcion.html', cursos=cursos, estudiantes=estudiantes)
 @inscripciones_bp.route('/edit/<int:id>', methods=('GET', 'POST'))
+@login_required
 def edit_inscripcion(id):
     conn = get_db_connection()
     inscripcion = conn.execute('SELECT * FROM inscripciones WHERE id = ?', (id,)).fetchone()
@@ -50,6 +54,7 @@ def edit_inscripcion(id):
                            cursos=cursos, estudiantes=estudiantes)
 
 @inscripciones_bp.route('/delete/<int:id>')
+@login_required
 def delete_inscripcion(id):
     conn = get_db_connection()
     conn.execute('DELETE FROM inscripciones WHERE id = ?', (id,))

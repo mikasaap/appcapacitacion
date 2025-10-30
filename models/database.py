@@ -21,7 +21,7 @@ def init_db():
         CREATE TABLE IF NOT EXISTS cursos (
             id INTEGER PRIMARY KEY AUTOINCREMENT,
             descripcion TEXT NOT NULL,
-            duracion INTEGER NOT NULL
+            horas INTEGER NOT NULL
         )
     ''')
     cursor.execute('''
@@ -43,7 +43,7 @@ def init_db():
             celular TEXT NOT NULL
         )
     ''')
-    cursor.execute('''INSERT INTO cursos (descripcion, duracion) VALUES
+    cursor.execute('''INSERT INTO cursos (descripcion, horas) VALUES
         ('Curso de Python', 40),    
         ('Curso de Flask', 30),
         ('Curso de SQL', 25)    

@@ -1,3 +1,7 @@
 venv
 academia.db
 __pycache__/
+
+
+# Variables de entorno
+.env
